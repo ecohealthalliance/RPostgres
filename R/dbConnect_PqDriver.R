@@ -90,7 +90,8 @@ dbConnect_PqDriver <- function(drv, dbname = NULL,
   on.exit(dbDisconnect(conn))
 
   # set datestyle workaround - https://github.com/r-dbi/RPostgres/issues/287
-  dbExecute(conn, "SET datestyle to 'iso, mdy'", immediate = TRUE)
+  # Removed to deal with https://github.com/dolthub/doltgresql/issues/47
+  #dbExecute(conn, "SET datestyle to 'iso, mdy'", immediate = TRUE)
 
   if (!is.null(timezone)) {
     # Side effect: check if time zone valid
